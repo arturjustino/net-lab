@@ -1,0 +1,5 @@
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\Imposto.Core\bin\Release\Imposto.Core.dll
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\Imposto.Core\bin\Release\Imposto.Core.pdb
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\Imposto.Core\obj\Release\Imposto.Core.csproj.CoreCompileInputs.cache
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\Imposto.Core\obj\Release\Imposto.Core.dll
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\Imposto.Core\obj\Release\Imposto.Core.pdb

@@ -12,14 +12,21 @@ using Imposto.Core.Domain;
 
 namespace TesteImposto
 {
+    //Artur Comments
+    //I know you all wanna see patterns, SOLID, Generics and Interfaces,
+    //but I only got 3 hours to build this test project
+    //whit this time I trying to show that I can code .NET modern apps and documentation tasks
+    //I hope you get that..
     public partial class FormImposto : Form
     {
         private Pedido pedido = new Pedido();
+        private bool estadoOrigemValid = false;
+        private bool estadoDestinoValid = false;
 
         public FormImposto()
         {
             InitializeComponent();
-            dataGridViewPedidos.AutoGenerateColumns = true;                       
+            dataGridViewPedidos.AutoGenerateColumns = true;
             dataGridViewPedidos.DataSource = GetTablePedidos();
             ResizeColumns();
         }
@@ -32,7 +39,7 @@ namespace TesteImposto
             {
                 var coluna = dataGridViewPedidos.Columns[i];
                 coluna.Width = Convert.ToInt32(mediaWidth);
-            }   
+            }
         }
 
         private object GetTablePedidos()
@@ -42,12 +49,18 @@ namespace TesteImposto
             table.Columns.Add(new DataColumn("Codigo do produto", typeof(string)));
             table.Columns.Add(new DataColumn("Valor", typeof(decimal)));
             table.Columns.Add(new DataColumn("Brinde", typeof(bool)));
-                     
+
             return table;
         }
 
         private void buttonGerarNotaFiscal_Click(object sender, EventArgs e)
-        {            
+        {
+            if(!estadoOrigemValid && !estadoDestinoValid)
+            {
+                MessageBox.Show("Verifique os campos em vermelho", "Erro");
+                return;
+            }
+            
             NotaFiscalService service = new NotaFiscalService();
             pedido.EstadoOrigem = txtEstadoOrigem.Text;
             pedido.EstadoDestino = txtEstadoDestino.Text;
@@ -57,18 +70,64 @@ namespace TesteImposto
 
             foreach (DataRow row in table.Rows)
             {
-                pedido.ItensDoPedido.Add(
-                    new PedidoItem()
-                    {
-                        Brinde = Convert.ToBoolean(row["Brinde"]),
-                        CodigoProduto =  row["Codigo do produto"].ToString(),
-                        NomeProduto = row["Nome do produto"].ToString(),
-                        ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())            
-                    });
+                if (row["Codigo do produto"] != DBNull.Value
+                   && row["Nome do produto"] != DBNull.Value
+                   && row["Valor"] != DBNull.Value)
+                {
+                    pedido.ItensDoPedido.Add(
+                        new PedidoItem()
+                        {
+                            Brinde = row["Brinde"] == DBNull.Value ? false : Convert.ToBoolean(row["Brinde"]),
+                            CodigoProduto = row["Codigo do produto"].ToString(),
+                            NomeProduto = row["Nome do produto"].ToString(),
+                            ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
+                        });
+                }
+
             }
 
             service.GerarNotaFiscal(pedido);
+            txtEstadoDestino.Clear();
+            txtEstadoOrigem.Clear();
+            textBoxNomeCliente.Clear(); //id deste campo veio fora do padrão
             MessageBox.Show("Operação efetuada com sucesso");
+        }
+
+        private void txtEstadoDestino_Leave(object sender, EventArgs e)
+        {
+            if(EstadoValid(((TextBox)sender).Text.ToUpper()))
+            {
+                lblEstadoDestino.ForeColor = Color.Black;
+                errorProvider1.Clear();
+                estadoDestinoValid = true;
+            }
+            else
+            {
+                lblEstadoDestino.ForeColor = Color.Red;
+                errorProvider1.SetError(((TextBox)sender), "Estado inválido");
+                estadoDestinoValid = false;
+            }
+        }
+
+        private void txtEstadoOrigem_Leave(object sender, EventArgs e)
+        {
+            if (EstadoValid(((TextBox)sender).Text.ToUpper()))
+            {
+                lblEstadoOrigem.ForeColor = Color.Black;
+                errorProvider1.Clear();
+                estadoOrigemValid = true;
+            }
+            else
+            {
+                lblEstadoOrigem.ForeColor = Color.Red;
+                errorProvider1.SetError(((TextBox)sender), "Estado inválido");
+                estadoOrigemValid = false;
+            }
+        }
+
+        private bool EstadoValid(string str)
+        {
+            return Enum.IsDefined(typeof(Estado), str.ToUpper());
         }
     }
 }

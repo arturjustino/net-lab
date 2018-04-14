@@ -1,0 +1,13 @@
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Release\TesteImposto.exe.config
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Release\TesteImposto.exe
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Release\TesteImposto.pdb
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Release\Imposto.Core.dll
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\bin\Release\Imposto.Core.pdb
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.csprojResolveAssemblyReference.cache
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.FormImposto.resources
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.Properties.Resources.resources
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.csproj.GenerateResource.cache
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.csproj.CoreCompileInputs.cache
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.csproj.CopyComplete
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.exe
+C:\Users\aojustino\Downloads\net-lab-master\TesteImposto\TesteImposto\obj\Release\TesteImposto.pdb
