@@ -12,11 +12,13 @@ using Imposto.Core.Domain;
 
 namespace TesteImposto
 {
-    //Artur Comments
+    //Artur Comments::
     //I know you all wanna see patterns, SOLID, Generics and Interfaces,
     //but I only got 3 hours to build this test project
-    //whit this time I trying to show that I can code .NET modern apps and documentation tasks
+    //whit this time I trying to show that I can code .NET modern apps and to document tasks.
     //I hope you get that..
+	//Also, I am working to another company, so no much time free to do this test, but I wanna work with NetShoes.
+	//Coincidentally, I am working with a system called NetDocs :)
     public partial class FormImposto : Form
     {
         private Pedido pedido = new Pedido();
